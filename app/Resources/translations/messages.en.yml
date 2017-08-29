@@ -1,0 +1,14 @@
+contact.fullname: Fullname
+contact.email: Email
+contact.subject: Subject
+contact.contacted_at: Contacted at
+contact.processed: Processed
+hello: Hello %name%!
+contact.count: "%count% contact|%count% contacts"
+
+user.id: Id
+user.username: Username
+user.email: Email
+user.registered_at: Registered At
+user.is_admin: Admin
+user.fullname: Fullname

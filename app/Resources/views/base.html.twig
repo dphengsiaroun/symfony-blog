@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+    {# <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        {% block stylesheets %}{% endblock %}
+        <link href="{{ asset('css/main.css') }}" rel="stylesheet">
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head> #}
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>The time of a Symfony Blog</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="This blog is a wall especially dedicated to freedom of expression each opinion could be visible of all." />
+
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+
+        <!-- Google Webfonts -->
+        <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,100,500' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+        
+        {% block stylesheets %}{% endblock %}
+        <!-- Main.css -->
+        <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+        <!-- Animate.css -->
+        <link rel="stylesheet" href="{{ asset('css/animate.css') }}">
+        <!-- Icomoon Icon Fonts-->
+        <link rel="stylesheet" href="{{ asset('css/icomoon.css') }}">
+        <!-- Magnific Popup -->
+        <link rel="stylesheet" href="{{ asset('css/magnific-popup.css') }}">
+        <!-- Salvattore -->
+        <link rel="stylesheet" href="{{ asset('css/salvattore.css') }}">
+        <!-- Theme Style -->
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+        <!-- Modernizr JS -->
+        <script src="{{ asset('js/modernizr-2.6.2.min.js') }}"></script>
+        <!-- FOR IE9 below -->
+        <!--[if lt IE 9]>
+        <script src="{{ asset('js/respond.min.js') }}"></script>
+        <![endif]-->
+
+	</head>
+    <body>
+        {% for label, messages in app.flashes(['success', 'warning', 'error']) %}
+            {% for message in messages %}
+                <div class="alert alert-{{ label|replace({'error': 'danger'}) }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+        {{ include ('/_menu.html.twig') }}
+        <header id="fh5co-header" role="banner">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <a href="#" class="fh5co-menu-btn js-fh5co-menu-btn">Menu <i class="icon-menu"></i></a>
+                        <a class="navbar-brand" href="{{ path('homepage') }}"><img src="{{ asset('images/logo.png')}}" style="width: 150px;"/></a>		
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- END .header -->
+
+        <div id="fh5co-main">
+            <div class="container">
+                <div class="row">   
+                    {% block body %}{% endblock %}
+                </div>
+            </div>
+        </div>
+
+	<footer id="fh5co-footer">
+		<div class="container">
+			<div class="row row-padded">
+				<div class="col-md-12 text-center">
+					<p class="fh5co-social-icons">
+						<a href="#"><i class="icon-twitter"></i></a>
+						<a href="#"><i class="icon-facebook"></i></a>
+						<a href="#"><i class="icon-instagram"></i></a>
+						<a href="#"><i class="icon-linkedin"></i></a>
+					</p>
+					<p><small>&copy; Dany PHENGSIAROUN. All Rights Reserved.</small></p>
+                    {# <p><small>Designed by: <a href="http://freehtml5.co/" target="_blank">FREEHTML5.co</a> | Images by: <a href="http://pexels.com" target="_blank">Pexels</a> </small></p> #}
+				</div>
+			</div>
+		</div>
+	</footer>
+
+        {# <div class="container">
+            <div class="jumbotron">
+                {% block header %}{% endblock %}
+            </div>
+            {% for label, messages in app.flashes(['success', 'warning', 'error']) %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ label|replace({'error': 'danger'}) }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endfor %}
+            {% block body %}{% endblock %}
+            <footer>
+                <div>current route name: {{ app.request.get('_route') }}</div>
+                <div>Change language:
+                    <a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'fr'})) }}">fr</a>
+                    -
+                    <a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'en'})) }}">en</a>
+                </div>
+            </footer>
+        </div>
+        {% block javascripts %}{% endblock %} #}
+
+        <!-- jQuery -->
+        <script src="{{ asset('js/jquery.min.js') }}"></script>
+        <!-- jQuery Easing -->
+        <script src="{{ asset('js/jquery.easing.1.3.js') }}"></script>
+        <!-- Bootstrap -->
+        <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+        <!-- Waypoints -->
+        <script src="{{ asset('js/jquery.waypoints.min.js') }}"></script>
+        <!-- Magnific Popup -->
+        <script src="{{ asset('js/jquery.magnific-popup.min.js') }}"></script>
+        <!-- Salvattore -->
+        <script src="{{ asset('js/salvattore.min.js') }}"></script>
+        <!-- Main JS -->
+        <script src="{{ asset('js/main.js') }}"></script>
+    </body>
+</html>

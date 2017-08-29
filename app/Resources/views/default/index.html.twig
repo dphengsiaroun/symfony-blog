@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+        <div id="fh5co-main">
+            <p style="text-align: center;">This blog is a wall especially dedicated to freedom of expression each opinion could be visible of all. 
+            <br/>Since our form, express as of now by posting your anger, your messages of loves or hope, your questions...</p>
+            <a href="{{ path('post') }}" style="display:block; width: 20%; margin: 0 auto 30px; text-align: center; background-color: #EF5353; color: white; padding: 10px; border-radius: 5px;">Add my post</a>
+        </div>
+    	 <div id="fh5co-board" data-columns>
+            {% for post in posts %}
+        	<div class="item animate-box">
+            	    {# <a href="{{ asset('images/img_10.jpg') }}" class="image-popup fh5co-board-img"><img src="{{ asset('images/img_10.jpg') }}" alt="image"></a> #}
+                    <div class="fh5co-desc">
+                        <h4>{{ post.title }}</h4>
+                        <p>{{ post.content }}</p>
+                        <span style="font-style: italic; font-size: 11px; color: #EF5353;">Posted by {{ post.fullname }} - {{ post.publishedAt|date }}</span>
+                        
+                    </div>
+        	</div>
+            {% endfor %}
+        </div>
+{% endblock %}

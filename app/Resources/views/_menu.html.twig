@@ -1,0 +1,33 @@
+<div id="fh5co-offcanvass">
+    <a href="#" class="fh5co-offcanvass-close js-fh5co-offcanvass-close">Menu <i class="icon-cross"></i> </a>
+    <h1 class="fh5co-logo"><a class="navbar-brand" href="index.html">The time of Symfony Blog</a></h1>
+    <ul>
+        <li{{ app.request.get('_route') == 'homepage' ? ' class="active"'}}><a href="{{ path('homepage') }}"><i class="icon-home"></i> Homepage</a></li>
+        <li{{ app.request.get('_route') == 'about' ? ' class="active"'}}><a href="{{ path('about') }}"><i class="icon-info"></i> About</a></li>
+        <li{{ app.request.get('_route') == 'contact' ? ' class="active"'}}><a href="{{ path('contact') }}"><i class="icon-mail2"></i> Contact</a></li><br/>
+        {% if app.user %}
+            <li{{ app.request.get('_route') == 'profile' ? ' class="active"'}}><a href="{{ path('profile') }}"><i class="icon-user"></i> Profile</a></li> 
+            <li{{ app.request.get('_route') == 'update_password' ? ' class="active"'}}><a href="{{ path('update_password') }}"><i class="icon-key"></i> Update password</a></li>
+            <li{{ app.request.get('_route') == 'post' ? ' class="active"'}}><a href="{{ path('post') }}"><i class="icon-file-add"></i> Add Post</a></li><br/>
+        {% if is_granted('ROLE_ADMIN') %}
+            <li{{ app.request.get('_route') == 'users' ? ' class="active"'}}><a href="{{ path('users') }}"><i class="icon-users"></i> Users</a></li>                 
+            <li{{ app.request.get('_route') == 'contact_list' ? ' class="active"'}}><a href="{{ path('contact_list') }}"><i class="icon-v-card"></i> Contacts</a></li><br/>
+        {% endif %} 
+            <li><a href="{{ path('logout') }}"><i class="icon-log-out"></i> Logout ({{ app.user.fullname }})</a></li>
+        {% else %}
+            <li{{ app.request.get('_route') == 'register' ? ' class="active"'}}><a href="{{ path('register') }}">Register</a></li>
+            <li{{ app.request.get('_route') == 'login' ? ' class="active"'}}><a href="{{ path('login') }}">Login</a></li>
+        {% endif %}
+    </ul>
+    <h3 class="fh5co-lead">Language</h3>
+    <p class="fh5co-social-icons">
+        <a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'fr'})) }}"><img src="{{ asset('images/france.png') }}" alt="image" style="width:30px;"></a>
+        <a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'en'})) }}"><img src="{{ asset('images/uk.png') }}" alt="image" style="width:30px;"></a>
+    </p>
+    <h3 class="fh5co-lead">Connect with us</h3>
+    <p class="fh5co-social-icons">
+        <a href="#"><i class="icon-twitter"></i></a>
+        <a href="#"><i class="icon-facebook"></i></a>
+        <a href="#"><i class="icon-instagram"></i></a>
+    </p>
+</div>

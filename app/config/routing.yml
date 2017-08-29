@@ -1,0 +1,17 @@
+redirect_to_default_locale:
+    path: ""
+    defaults:
+        _controller: FrameworkBundle:Redirect:UrlRedirect
+        path: /%locale%
+
+logout:
+    path: "/logout"
+
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
+    prefix: "{_locale}"
+    requirements:
+        _locale: "|en|fr"
+    defaults:
+        _locale: en

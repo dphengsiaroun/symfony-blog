@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block header %}<h1>Contacts</h1>{% endblock %}
+
+{% block body %}
+<div>
+    <h3>Fullname</h3>
+    <p class="bg-info">{{ contact.fullname }}</p>
+    <h3>Subject</h3>
+    <p class="bg-info">{{ contact.subject }}</p>
+    <h3>Message</h3>
+    <p class="bg-info">{{ contact.message|nl2br }}</p>
+    <h3>Contacted at</h3>
+    <p class="bg-info">{{ contact.contactedAt|date }}</p>
+    <hr />
+    {% if contact.isProcessed %}
+        <p>Processed on {{ contact.processedAt|date }}</p>
+    {% else %}
+        <a class="btn btn-primary" href="{{ path('contact_process', {'id': contact.id, 'token': csrf_token('contact_process.' ~ contact.id)}) }}">Mark as processed</a>
+    {% endif %}
+</div>
+{% endblock %}

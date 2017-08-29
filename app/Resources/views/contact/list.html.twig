@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+<div class="navbar navbar-default">
+    <div class="container-fluid">
+        <ul class="nav navbar-nav">
+            <li{{ app.request.get('filter', 'all') == 'all' ? ' class="active"'}}><a href="?filter=all">All</a></li>
+            <li{{ app.request.get('filter') == 'only_processed' ? ' class="active"'}}><a href="?filter=only_processed">Only processed</a></li>
+            <li{{ app.request.get('filter') == 'only_not_processed' ? ' class="active"'}}><a href="?filter=only_not_processed">Only not processed</a></li>
+        </ul>
+    </div>
+</div>
+<div>
+    {% if contacts|length > 0 %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>{{ 'contact.fullname'|trans }}</th>
+                <th>{{ 'contact.email'|trans }}</th>
+                <th>{{ 'contact.subject'|trans }}</th>
+                <th>{{ 'contact.contacted_at'|trans }}</th>
+                <th>{{ 'contact.processed'|trans }}</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for contact in contacts %}
+                <tr>
+                    <td>{{ contact.fullname }}</td>
+                    <td>{{ contact.email }}</td>
+                    <td>{{ contact.subject }}</td>
+                    <td>{{ contact.contactedAt|date }}</td>
+                    <td>
+                        {% if contact.isProcessed %}
+                            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> on {{ contact.processedAt|date }}
+                        {% else %}
+                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                        {% endif %}
+                    </td>
+                    <td><a class="btn btn-primary" href="{{ path('contact_show', {'id': contact.id}) }}">View</a></td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="4">No contacts.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+        <div class="alert alert-warning">No contacts.</div>
+    {% endif %}
+</div>
+{% endblock %}
