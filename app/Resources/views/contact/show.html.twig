@@ -3,20 +3,43 @@
 {% block header %}<h1>Contacts</h1>{% endblock %}
 
 {% block body %}
-<div>
-    <h3>Fullname</h3>
-    <p class="bg-info">{{ contact.fullname }}</p>
-    <h3>Subject</h3>
-    <p class="bg-info">{{ contact.subject }}</p>
-    <h3>Message</h3>
-    <p class="bg-info">{{ contact.message|nl2br }}</p>
-    <h3>Contacted at</h3>
-    <p class="bg-info">{{ contact.contactedAt|date }}</p>
-    <hr />
-    {% if contact.isProcessed %}
-        <p>Processed on {{ contact.processedAt|date }}</p>
-    {% else %}
-        <a class="btn btn-primary" href="{{ path('contact_process', {'id': contact.id, 'token': csrf_token('contact_process.' ~ contact.id)}) }}">Mark as processed</a>
-    {% endif %}
-</div>
+<div id="fh5co-main">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2">
+					<h2>Show contact</h2>
+					<div class="fh5co-spacer fh5co-spacer-sm"></div>
+					<div class="row">
+						<div class="col-md-12">
+                            <div class="fh5co-pricing-table">
+								<ul class="fh5co-list-check">
+									<li class="fh5co-include">
+                                        <h3>Fullname</h3>
+                                        <p>{{ contact.fullname }}</p>
+                                    </li>
+									<li class="fh5co-include">
+                                        <h3>Subject: </h3>
+                                        <p>{{ contact.subject }}</p>
+                                    </li>
+									<li class="fh5co-include">
+                                        <h3>Message: </h3>
+                                        <p>{{ contact.message|nl2br }}</p>
+                                    </li>
+									<li class="fh5co-include">
+                                        <h3>Contacted at: </h3>
+                                        <p>{{ contact.contactedAt|date }}</p>
+                                    </li>
+								</ul>
+                                {% if contact.isProcessed %}
+                                    <p>Processed on {{ contact.processedAt|date }}</p>
+                                {% else %}
+                                    <a href="{{ path('admin_contact_process', {'id': contact.id, 'token': csrf_token('contact_process.' ~ contact.id)}) }}" class="btn btn-block btn-sm btn-outline">Mark as processed</a>
+                                {% endif %}
+							</div>
+						</div>
+					</div>
+				</div>
+        	</div>
+       </div>
+	</div>
 {% endblock %}

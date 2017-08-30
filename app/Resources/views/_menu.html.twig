@@ -1,17 +1,16 @@
 <div id="fh5co-offcanvass">
     <a href="#" class="fh5co-offcanvass-close js-fh5co-offcanvass-close">Menu <i class="icon-cross"></i> </a>
-    <h1 class="fh5co-logo"><a class="navbar-brand" href="index.html">The time of Symfony Blog</a></h1>
+    <h1 class="fh5co-logo"><a class="navbar-brand" href="index.html">The time of a Symfony Blog</a></h1>
     <ul>
         <li{{ app.request.get('_route') == 'homepage' ? ' class="active"'}}><a href="{{ path('homepage') }}"><i class="icon-home"></i> Homepage</a></li>
         <li{{ app.request.get('_route') == 'about' ? ' class="active"'}}><a href="{{ path('about') }}"><i class="icon-info"></i> About</a></li>
         <li{{ app.request.get('_route') == 'contact' ? ' class="active"'}}><a href="{{ path('contact') }}"><i class="icon-mail2"></i> Contact</a></li><br/>
         {% if app.user %}
             <li{{ app.request.get('_route') == 'profile' ? ' class="active"'}}><a href="{{ path('profile') }}"><i class="icon-user"></i> Profile</a></li> 
-            <li{{ app.request.get('_route') == 'update_password' ? ' class="active"'}}><a href="{{ path('update_password') }}"><i class="icon-key"></i> Update password</a></li>
             <li{{ app.request.get('_route') == 'post' ? ' class="active"'}}><a href="{{ path('post') }}"><i class="icon-file-add"></i> Add Post</a></li><br/>
         {% if is_granted('ROLE_ADMIN') %}
-            <li{{ app.request.get('_route') == 'users' ? ' class="active"'}}><a href="{{ path('users') }}"><i class="icon-users"></i> Users</a></li>                 
-            <li{{ app.request.get('_route') == 'contact_list' ? ' class="active"'}}><a href="{{ path('contact_list') }}"><i class="icon-v-card"></i> Contacts</a></li><br/>
+            <li{{ app.request.get('_route') == 'admin_users' ? ' class="active"'}}><a href="{{ path('admin_users') }}"><i class="icon-users"></i> Users</a></li>                 
+            <li{{ app.request.get('_route') == 'admin_contact_list' ? ' class="active"'}}><a href="{{ path('admin_contact_list') }}"><i class="icon-v-card"></i> Contacts</a></li><br/>
         {% endif %} 
             <li><a href="{{ path('logout') }}"><i class="icon-log-out"></i> Logout ({{ app.user.fullname }})</a></li>
         {% else %}
