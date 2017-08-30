@@ -45,6 +45,15 @@ class PostController extends Controller
     }
 
     /**
+     * @Route("/post/{slug}", name="blog_post")
+     * @Method("GET")
+     */
+    //  public function postShowAction(Post $post)
+    //  {
+    //      return $this->render('post/post_show.html.twig', ['post' => $post]);
+    //  }
+
+    /**
      * @Route("/", name="homepage")
      * @Method("GET")
      */
@@ -60,15 +69,13 @@ class PostController extends Controller
         ]);
     }
 
+
     /**
-     * @Route("/contacts/{id}", name="contact_show")
-     * @Security("is_granted('ROLE_ADMIN')")
+     * @Route("/posts/{slug}", name="blog_post")
      * @Method("GET")
      */
-    // public function showAction(Request $request, Post $contact)
-    // {
-    //     return $this->render('contact/show.html.twig', [
-    //         'contact' => $contact,
-    //     ]);
-    // }
+    public function postShowAction(Post $post)
+    {
+        return $this->render('blog/post_show.html.twig', ['post' => $post]);
+    }
 }

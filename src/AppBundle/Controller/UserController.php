@@ -79,6 +79,30 @@ class UserController extends Controller
         ]);
     }
 
+     /**
+     * @Route("/update-profile", name="update_profile")
+     * @Method({"GET", "POST"})
+     */
+     public function updateProfileAction(Request $request, EntityManagerInterface $em, UserInterface $user)
+     {
+         $form = $this->createForm(UserUpdateProfileType::class);
+ 
+         $form->handleRequest($request);
+ 
+         if ($form->isSubmitted() && $form->isValid()) {
+ 
+             $em->flush();// execute all SQL queries
+ 
+             $this->addFlash('success', 'Profile updated!');
+ 
+             return $this->redirectToRoute('homepage');
+         }
+ 
+         return $this->render('user/update_profile.html.twig', [
+             'form' => $form->createView(),
+         ]);
+     }
+
     /**
      * @Route("/login", name="login")
      * @Method({"GET", "POST"})
@@ -98,7 +122,7 @@ class UserController extends Controller
     }
 
      /**
-     * @Route("/users", name="users")
+     * @Route("/admin/users", name="admin_users")
      * @Method("GET")
      */
     public function usersAction(Request $request)
@@ -108,7 +132,7 @@ class UserController extends Controller
         $filter = $request->query->get('filter', 'all');
         $users = $em->getRepository(User::class)->findForList($filter);
 
-        return $this->render('user/users.html.twig', [
+        return $this->render('user/list.html.twig', [
             'users' => $users,
         ]);
     }

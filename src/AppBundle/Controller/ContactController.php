@@ -54,7 +54,7 @@ class ContactController extends Controller
     }
 
     /**
-     * @Route("/contacts", name="contact_list")
+     * @Route("/admin/contacts", name="admin_contact_list")
      * @Security("is_granted('ROLE_ADMIN')")
      * @Method("GET")
      */
@@ -72,7 +72,7 @@ class ContactController extends Controller
     }
 
     /**
-     * @Route("/contacts/{id}", name="contact_show")
+     * @Route("/admin/contacts/{id}", name="admin_contact_show")
      * @Security("is_granted('ROLE_ADMIN')")
      * @Method("GET")
      */
@@ -84,7 +84,7 @@ class ContactController extends Controller
     }
 
     /**
-     * @Route("/contacts/{id}/process", name="contact_process")
+     * @Route("/admin/contacts/{id}/process", name="admin_contact_process")
      * @Security("is_granted('ROLE_ADMIN')")
      * @Method("GET")
      */
