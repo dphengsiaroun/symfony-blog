@@ -29,7 +29,7 @@ class PostType extends AbstractType
                     new Assert\Length(['max' => 100]),
                 ]
             ])
-            ->add('file', FileType::class)
+            // ->add('file', FileType::class)
             ->add('content', TextareaType::class, [
                 'constraints' => [
                     new Assert\NotBlank(),

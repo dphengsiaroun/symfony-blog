@@ -7698,7 +7698,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 #fh5co-board .item .fh5co-desc {
   padding: 20px;
-  float: left;
+  /* float: left; */
   line-height: 24px;
 }
 #fh5co-board .item .fh5co-item-title {
