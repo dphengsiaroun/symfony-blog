@@ -4,7 +4,7 @@
 <div id="fh5co-main">
     <h2>Users list</h2>
     {% if users|length > 0 %}
-    <table class="table">
+    <table class="table table-striped">
         <thead>
             <tr>
                 <th>{{ 'user.fullname'|trans }}</th>
@@ -23,7 +23,7 @@
                     <td>{{ user.email }}</td>
                     <td>{{ user.registeredAt |date }}</td>
                     <td>{{ user.isAdmin }}</td>
-                    <td><a class="btn btn-primary" href="{{ path('admin_user_show', {'id': user.id}) }}">View</a></td>
+                    <td><a class="btn btn-primary" href="{{ path('admin_user_show', {'id': user.id}) }}"><i class="icon-eye"></i> View</a></td>
                 </tr>
             {% else %}
                 <tr>

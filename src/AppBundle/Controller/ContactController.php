@@ -66,7 +66,7 @@ class ContactController extends Controller
 
         $contacts = $em->getRepository(Contact::class)->findForList($filter);
 
-        return $this->render('contact/list.html.twig', [
+        return $this->render('contact/admin/list.html.twig', [
             'contacts' => $contacts,
         ]);
     }
@@ -78,7 +78,7 @@ class ContactController extends Controller
      */
     public function showAction(Request $request, Contact $contact)
     {
-        return $this->render('contact/show.html.twig', [
+        return $this->render('contact/admin/show.html.twig', [
             'contact' => $contact,
         ]);
     }

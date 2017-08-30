@@ -2,7 +2,7 @@
 
 
 {% block body %}
-<div class="navbar navbar-default">
+{# <div class="navbar navbar-default">
     <div class="container-fluid">
         <ul class="nav navbar-nav">
             <li{{ app.request.get('filter', 'all') == 'all' ? ' class="active"'}}><a href="?filter=all">All</a></li>
@@ -10,10 +10,11 @@
             <li{{ app.request.get('filter') == 'only_not_processed' ? ' class="active"'}}><a href="?filter=only_not_processed">Only not processed</a></li>
         </ul>
     </div>
-</div>
-<div>
+</div> #}
+<div id="fh5co-main">
+    <h2>Contacts list</h2>
     {% if contacts|length > 0 %}
-    <table class="table">
+    <table class="table table-striped">
         <thead>
             <tr>
                 <th>{{ 'contact.fullname'|trans }}</th>
@@ -31,14 +32,14 @@
                     <td>{{ contact.email }}</td>
                     <td>{{ contact.subject }}</td>
                     <td>{{ contact.contactedAt|date }}</td>
-                    <td>
+                    <td style="text-align: center">
                         {% if contact.isProcessed %}
                             <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> on {{ contact.processedAt|date }}
                         {% else %}
                             <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                         {% endif %}
                     </td>
-                    <td><a class="btn btn-primary" href="{{ path('admin_contact_show', {'id': contact.id}) }}">View</a></td>
+                    <td><a class="" href="{{ path('admin_contact_show', {'id': contact.id}) }}"><i class="icon-eye"></i> View</a></td>
                 </tr>
             {% else %}
                 <tr>

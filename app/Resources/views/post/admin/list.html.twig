@@ -2,9 +2,9 @@
 
 {% block body %}
 <div id="fh5co-main">
-    <h2>posts list</h2>
+    <h2>Posts list</h2>
     {% if posts|length > 0 %}
-    <table class="table">
+    <table class="table table-striped">
         <thead>
             <tr>
                 <th>{{ 'post.fullname'|trans }}</th>
@@ -21,7 +21,7 @@
                     <td>{{ post.content }}</td>
                     <td>{{ post.title }}</td>
                     <td>{{ post.publishedAt |date }}</td>
-                    <td><a class="btn btn-primary" href="{{ path('admin_post_show', {'id': post.id}) }}">View</a></td>
+                    <td><a class="btn btn-primary" href="{{ path('admin_post_show', {'id': post.id}) }}"><i class="icon-eye"></i> View</a></td>
                 </tr>
             {% else %}
                 <tr>

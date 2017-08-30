@@ -55,7 +55,7 @@ class PostController extends Controller
          $filter = $request->query->get('filter', 'all');
          $posts = $em->getRepository(Post::class)->findForList($filter);
  
-         return $this->render('post/list.html.twig', [
+         return $this->render('post/admin/list.html.twig', [
              'posts' => $posts
          ]);
      }
@@ -67,7 +67,7 @@ class PostController extends Controller
      */
      public function showAction(Request $request, Post $post)
      {
-         return $this->render('post/show.html.twig', [
+         return $this->render('post/admin/show.html.twig', [
              'post' => $post,
          ]);
      }
