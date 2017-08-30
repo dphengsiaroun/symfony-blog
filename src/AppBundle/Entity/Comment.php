@@ -9,10 +9,10 @@ use Symfony\Component\HttpFoundation\File\File;
 /**
  * Post
  *
- * @ORM\Table(name="post")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\PostRepository")
+ * @ORM\Table(name="comment")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\CommentRepository")
  */
-class Post
+class Comment
 {
     /**
      * @var int
@@ -136,6 +136,16 @@ class Post
         $this->title = $title;
 
         return $this;
+    }
+
+    /**
+     * Get file
+     *
+     * @return File|null
+     */
+    public function getFile()
+    {
+        return $this->file;
     }
 
      /**

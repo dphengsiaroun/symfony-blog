@@ -21,7 +21,7 @@
                     <td>{{ post.content }}</td>
                     <td>{{ post.title }}</td>
                     <td>{{ post.publishedAt |date }}</td>
-                    <td><a class="btn btn-primary" href="{{ path('admin_post_show', {'id': post.id}) }}"><i class="icon-eye"></i> View</a></td>
+                    <td><a class="btn btn-block btn-sm btn-outline" href="{{ path('admin_post_show', {'id': post.id}) }}"><i class="icon-eye"></i> View</a></td>
                 </tr>
             {% else %}
                 <tr>

@@ -28,6 +28,17 @@ class DefaultController extends Controller
          ]);
      }
 
+     /**
+     * @Route("/posts/{id}", name="post_show")
+     * @Method("GET")
+     */
+     public function showAction(Request $request, Post $post)
+     {
+         return $this->render('default/show.html.twig', [
+             'post' => $post,
+         ]);
+     }
+
     /**
      * @Route("/about", name="about")
      */

@@ -2862,8 +2862,9 @@ th {
 .table > tfoot > tr > td {
   padding: 8px;
   line-height: 1.42857;
-  vertical-align: top;
+  vertical-align: middle;
   border-top: 1px solid #ddd;
+  text-align: center;
 }
 .table > thead > tr > th {
   vertical-align: bottom;
@@ -7737,7 +7738,6 @@ pre {
   border-bottom: none !important;
   text-transform: uppercase;
   letter-spacing: 2px;
-  margin-bottom: 20px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   -ms-border-radius: 5px;
