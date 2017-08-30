@@ -11,8 +11,29 @@
                     <span style="font-style: italic; font-size: 15px; color: #EF5353;"><i class="icon-user"></i> Posted by {{ post.fullname }} - {{ post.publishedAt|date }}</span>
 					<div class="fh5co-spacer fh5co-spacer-sm"></div>
 					<p>{{ post.content }}</p>
+					<a href="{{ path('comment') }}" class="btn btn-primary"><i class="icon-speech-bubble"></i> Add comment</a>
 				</div>
         	</div>
        </div>
 	</div>
+	{# <div id="fh5co-main">
+		<div class="container">
+			<div class="row">
+			{% for comment in comments %}
+				<div class="col-md-2 col-md-offset-2">
+					<h2>{{ comment.title }}</h2>
+                    <span style="font-style: italic; font-size: 15px; color: #EF5353;"><i class="icon-user"></i> Posted by {{ comment.fullname }} - {{ comment.publishedAt|date }}</span>
+					<div class="fh5co-spacer fh5co-spacer-sm"></div>
+					<p>{{ comment.content }}</p>
+				</div>
+				<div class="col-md-5 col-md-offset-2">
+					<h2>{{ comment.title }}</h2>
+                    <span style="font-style: italic; font-size: 15px; color: #EF5353;"><i class="icon-user"></i> Posted by {{ comment.fullname }} - {{ comment.publishedAt|date }}</span>
+					<div class="fh5co-spacer fh5co-spacer-sm"></div>
+					<p>{{ comment.content }}</p>
+				</div>
+			{% endfor %}
+        	</div>
+       </div>
+	</div> #}
 {% endblock %}

@@ -35,7 +35,7 @@ class DefaultController extends Controller
      public function showAction(Request $request, Post $post)
      {
          return $this->render('default/show.html.twig', [
-             'post' => $post,
+             'post' => $post
          ]);
      }
 
