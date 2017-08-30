@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
@@ -122,20 +123,32 @@ class UserController extends Controller
     }
 
      /**
-     * @Route("/admin/users", name="admin_users")
+     * @Route("/admin/users", name="admin_user_list")
      * @Method("GET")
      */
-    public function usersAction(Request $request)
+    public function listAction(Request $request)
     {
         $em = $this->getDoctrine()->getEntityManager();
 
         $filter = $request->query->get('filter', 'all');
         $users = $em->getRepository(User::class)->findForList($filter);
 
-        return $this->render('user/list.html.twig', [
+        return $this->render('user/admin/list.html.twig', [
             'users' => $users,
         ]);
     }
+
+    /**
+     * @Route("/admin/users/{id}", name="admin_user_show")
+     * @Security("is_granted('ROLE_ADMIN')")
+     * @Method("GET")
+     */
+     public function showAction(Request $request, User $user)
+     {
+         return $this->render('user/admin/show.html.twig', [
+             'user' => $user,
+         ]);
+     }
 
     /**
      * @Route("/profile/{name}", name="profile",

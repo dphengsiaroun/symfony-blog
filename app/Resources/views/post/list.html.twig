@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div id="fh5co-main">
+    <h2>posts list</h2>
+    {% if posts|length > 0 %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>{{ 'post.fullname'|trans }}</th>
+                <th>{{ 'post.content'|trans }}</th>
+                <th>{{ 'post.title'|trans }}</th>
+                <th>{{ 'post.published_at'|trans }}</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for post in posts %}
+                <tr>
+                    <td>{{ post.fullname }}</td>
+                    <td>{{ post.content }}</td>
+                    <td>{{ post.title }}</td>
+                    <td>{{ post.publishedAt |date }}</td>
+                    <td><a class="btn btn-primary" href="{{ path('admin_post_show', {'id': post.id}) }}">View</a></td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="4">No posts.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+        <div class="alert alert-warning">No posts.</div>
+    {% endif %}
+</div>
+
+
+{% endblock %}

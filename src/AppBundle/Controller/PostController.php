@@ -45,37 +45,30 @@ class PostController extends Controller
     }
 
     /**
-     * @Route("/post/{slug}", name="blog_post")
+     * @Route("/admin/posts", name="admin_post_list")
      * @Method("GET")
      */
-    //  public function postShowAction(Post $post)
-    //  {
-    //      return $this->render('post/post_show.html.twig', ['post' => $post]);
-    //  }
+     public function listAction(Request $request)
+     {
+         $em = $this->getDoctrine()->getEntityManager();
+ 
+         $filter = $request->query->get('filter', 'all');
+         $posts = $em->getRepository(Post::class)->findForList($filter);
+ 
+         return $this->render('post/list.html.twig', [
+             'posts' => $posts
+         ]);
+     }
 
-    /**
-     * @Route("/", name="homepage")
+     /**
+     * @Route("/admin/posts/{id}", name="admin_post_show")
+     * @Security("is_granted('ROLE_ADMIN')")
      * @Method("GET")
      */
-    public function listAction(Request $request)
-    {
-        $em = $this->getDoctrine()->getEntityManager();
-
-        $filter = $request->query->get('filter', 'all');
-        $posts = $em->getRepository(Post::class)->findForList($filter);
-
-        return $this->render('default/index.html.twig', [
-            'posts' => $posts
-        ]);
-    }
-
-
-    /**
-     * @Route("/posts/{slug}", name="blog_post")
-     * @Method("GET")
-     */
-    public function postShowAction(Post $post)
-    {
-        return $this->render('blog/post_show.html.twig', ['post' => $post]);
-    }
+     public function showAction(Request $request, Post $post)
+     {
+         return $this->render('post/show.html.twig', [
+             'post' => $post,
+         ]);
+     }
 }

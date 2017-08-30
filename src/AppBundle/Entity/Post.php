@@ -45,18 +45,6 @@ class Post
     private $title;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="filename", type="string", length=255)
-     */
-     private $filename;
-
-     /**
-     * @var File
-    */
-     private $file;
-
-    /**
      * @var \DateTime
      *
      * @ORM\Column(name="published_at", type="datetime")

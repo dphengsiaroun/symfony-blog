@@ -12,3 +12,9 @@ user.email: Email
 user.registered_at: Registered At
 user.is_admin: Admin
 user.fullname: Fullname
+
+post.id: Id
+post.content: Content
+post.title: Title
+post.published_at: Published At
+post.fullname: Fullname
