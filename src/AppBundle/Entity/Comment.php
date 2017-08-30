@@ -7,7 +7,7 @@ use AppBundle\Entity\User;
 use Symfony\Component\HttpFoundation\File\File;
 
 /**
- * Post
+ * Comment
  *
  * @ORM\Table(name="comment")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\CommentRepository")
@@ -59,11 +59,11 @@ class Comment
 
     public static function createFromUser(User $user)
     {
-        $post = new self();
+        $Comment = new self();
 
-        $post->setFullname($user->getFullname());
+        $Comment->setFullname($user->getFullname());
 
-        return $post;
+        return $Comment;
     }
 
     /**
@@ -81,7 +81,7 @@ class Comment
      *
      * @param string $fullname
      *
-     * @return Post
+     * @return Comment
      */
     public function setFullname($fullname)
     {
@@ -105,7 +105,7 @@ class Comment
      *
      * @param string $content
      *
-     * @return Post
+     * @return Comment
      */
     public function setContent($content)
     {
@@ -129,23 +129,13 @@ class Comment
      *
      * @param string $title
      *
-     * @return Post
+     * @return Comment
      */
     public function setTitle($title)
     {
         $this->title = $title;
 
         return $this;
-    }
-
-    /**
-     * Get file
-     *
-     * @return File|null
-     */
-    public function getFile()
-    {
-        return $this->file;
     }
 
      /**
@@ -163,7 +153,7 @@ class Comment
      *
      * @param \DateTime $publishedAt
      *
-     * @return Post
+     * @return Comment
      */
     public function setPublishedAt($publishedAt)
     {
