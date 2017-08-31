@@ -4,7 +4,7 @@
         <div id="fh5co-main">
             <p style="text-align: center;">This blog is a wall especially dedicated to freedom of expression each opinion could be visible of all. 
             <br/>Since our form, express as of now by posting your anger, your messages of loves or hope, your questions...</p>
-            <a href="{{ path('post') }}" class="btn btn-primary" style="display: block; width: 25%; margin: 0 auto 20px;">Add my post</a>
+            <a href="{{ path('post') }}" class="btn btn-primary" style="display: block; width: 25%; margin: 0 auto 20px;"><i class="icon-file-add"></i> Add post</a>
         </div>
     	 <div id="fh5co-board" data-columns>
             {% for post in posts %}
@@ -15,7 +15,7 @@
                         <p>{{ post.content }}</p>
                         <span style="font-style: italic; font-size: 12px; color: #EF5353;"><i class="icon-user"></i> {{ post.fullname }}</span>
                         <span style="font-style: italic; font-size: 12px; color: #EF5353; margin-left: 20px;"><i class="icon-calendar"></i> {{ post.publishedAt|date }}</span>
-                        <a href="{{ path('post_show', {'id': post.id}) }}" class="btn btn-block btn-sm btn-outline" style="display: block; text-align: center; padding: 10px; margin: 10px auto 0px; font-size: 13px;">Lire la suite</a>
+                        <a href="{{ path('post_show', {'id': post.id}) }}" class="btn btn-block btn-sm btn-outline" style="display: block; text-align: center; padding: 10px; margin: 10px auto 0px; font-size: 13px;"><i class="icon-eye"></i> Lire la suite</a>
                     </div>
         	</div>
             {% endfor %}

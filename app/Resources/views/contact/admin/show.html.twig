@@ -7,7 +7,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2">
-					<h2>Show contact</h2>
+					<h2><i class="icon-mail2"></i> Show contact</h2>
 					<div class="fh5co-spacer fh5co-spacer-sm"></div>
 					<div class="row">
 						<div class="col-md-12">
@@ -31,7 +31,7 @@
                                     </li>
 								</ul>
                                 {% if contact.isProcessed %}
-                                    <p>Processed on {{ contact.processedAt|date }}</p>
+                                    <span style="font-style: italic; text-align: center; font-size: 14px; color: #EF5353;"><i class="icon-calendar"></i> Processed on {{ contact.processedAt|date }}</p>
                                 {% else %}
                                     <a href="{{ path('admin_contact_process', {'id': contact.id, 'token': csrf_token('contact_process.' ~ contact.id)}) }}" class="btn btn-block btn-sm btn-outline">Mark as processed</a>
                                 {% endif %}

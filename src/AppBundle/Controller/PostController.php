@@ -71,4 +71,30 @@ class PostController extends Controller
              'post' => $post,
          ]);
      }
+
+      /**
+     * Deletes a Post entity.
+     *
+     * @Route("/admin/{id}/delete", name="admin_post_delete")
+     * @Method("POST")
+     * @Security("is_granted('delete', post)")
+     *
+     * The Security annotation value is an expression (if it evaluates to false,
+     * the authorization mechanism will prevent the user accessing this resource).
+     */
+    public function deleteAction(Request $request, Post $post)
+    {
+        // Delete the tags associated with this blog post. This is done automatically
+        // by Doctrine, except for SQLite (the database used in this application)
+        // because foreign key support is not enabled by default in SQLite
+        $post->getTags()->clear();
+
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($post);
+        $em->flush();
+
+        $this->addFlash('success', 'Post deleted');
+
+        return $this->redirectToRoute('admin_list');
+    }
 }

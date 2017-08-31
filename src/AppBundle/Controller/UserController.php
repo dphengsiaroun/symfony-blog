@@ -151,21 +151,16 @@ class UserController extends Controller
      }
 
     /**
-     * @Route("/profile/{name}", name="profile",
-     *  defaults={"name"="dany"},
-     *  requirements={"name"="[a-z]+"}
-     * )
+     * @Route("/profile/", name="profile")
      * @Method("GET")
      */
-    public function profileAction(Request $request, $name)
+    public function profileAction(Request $request)
     {
         $em = $this->getDoctrine()->getEntityManager();
 
         $filter = $request->query->get('filter', 'all');
         $name = $em->getRepository(User::class)->findForList($filter);
 
-        return $this->render('user/profile.html.twig', [
-            'name' => $name,
-        ]);
+        return $this->render('user/profile.html.twig');
     }
 }

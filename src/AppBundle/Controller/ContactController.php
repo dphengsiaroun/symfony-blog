@@ -90,7 +90,7 @@ class ContactController extends Controller
      */
     public function processAction(Request $request, Contact $contact, EntityManagerInterface $em)
     {
-        $response = $this->redirectToRoute('contact_show', [
+        $response = $this->redirectToRoute('admin_contact_show', [
             'id' => $contact->getId()
         ]);
 
