@@ -24,7 +24,7 @@
 										<p>{{ app.user.email }}</p>
 									</li>
 								</ul>
-								<a href="{{ path('update_profile') }}" class="btn btn-block btn-sm btn-outline">Update profile</a>
+								<a href="{{ path('edit_profile', {'id': app.user.id }) }}" class="btn btn-block btn-sm btn-outline">Update profile</a>
 								<a href="{{ path('update_password') }}" class="btn btn-block btn-sm btn-outline">Update password</a>
 							</div>
 						</div>

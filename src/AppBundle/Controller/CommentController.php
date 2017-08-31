@@ -29,7 +29,9 @@ class CommentController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $comment->setPublishedAt(new \DateTime());
-            $user->setIsAdmin(false);
+            $comment->setUserId($user->getId());
+            $comment->setPostId(5);
+
 
             $em->persist($comment);// prepare to insert into the database
             $em->flush();// execute all SQL queries

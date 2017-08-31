@@ -12,12 +12,18 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 
-class CommentType extends AbstractType
+class PostEditType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
             ->add('fullname', TextType::class, [
+                'constraints' => [
+                    new Assert\NotBlank(),
+                    new Assert\Length(['max' => 100]),
+                ]
+            ])
+            ->add('title', TextType::class, [
                 'constraints' => [
                     new Assert\NotBlank(),
                     new Assert\Length(['max' => 100]),
@@ -29,7 +35,7 @@ class CommentType extends AbstractType
                     new Assert\Length(['min' => 3, 'max' => 4000]),
                 ]
             ])
-            ->add('comment', SubmitType::class)
+            ->add('edit', SubmitType::class)
         ;
     }
 }

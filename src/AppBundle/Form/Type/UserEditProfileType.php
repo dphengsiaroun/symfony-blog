@@ -12,7 +12,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints as Assert;
 use AppBundle\Entity\User;
 
-class UserUpdateProfileType extends AbstractType
+class UserEditProfileType extends AbstractType
 {
     /**
      * {@inheritdoc}
@@ -38,7 +38,7 @@ class UserUpdateProfileType extends AbstractType
                     new Assert\Email(),
                 ]
             ])
-            ->add('update', SubmitType::class)
+            ->add('edit', SubmitType::class)
         ;
     }
 }

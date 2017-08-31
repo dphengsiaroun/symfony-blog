@@ -7,7 +7,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2">
-					<h2>Show post</h2>
+					<h2><i class="icon-file"></i> Show post</h2>
 					<div class="fh5co-spacer fh5co-spacer-sm"></div>
 					<div class="row">
 						<div class="col-md-12">
@@ -30,11 +30,6 @@
                                         <p>{{ post.publishedAt |date  }}</p>
                                     </li>
 								</ul>
-                                {# {% if user.isProcessed %}
-                                    <p>Processed on {{ user.processedAt|date }}</p>
-                                {% else %}
-                                    <a href="{{ path('admin_user_process', {'id': user.id, 'token': csrf_token('contact_process.' ~ user.id)}) }}" class="btn btn-block btn-sm btn-outline">Mark as processed</a>
-                                {% endif %} #}
 							</div>
 						</div>
 					</div>

@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\User\UserInterface;
 use AppBundle\Entity\Post;
 use AppBundle\Form\Type\PostType;
+use AppBundle\Form\Type\PostEditType;
 use Doctrine\ORM\EntityManagerInterface;
 
 class PostController extends Controller
@@ -72,29 +73,43 @@ class PostController extends Controller
          ]);
      }
 
+     /**
+     * @Route("/admin/posts/{id}/edit", name="admin_post_edit")
+     * @Method({"GET", "POST"})
+     */
+    public function editAction(Request $request, Post $post)
+    {
+        $form = $this->createForm(PostEditType::class, $post);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            $this->addFlash('success', 'Post updated!');
+
+            return $this->redirectToRoute('admin_post_list');
+        }
+
+        return $this->render('post/admin/edit.html.twig', [
+            'post' => $post,
+            'form' => $form->createView(),
+        ]);
+    }
+
       /**
      * Deletes a Post entity.
      *
      * @Route("/admin/{id}/delete", name="admin_post_delete")
      * @Method("POST")
-     * @Security("is_granted('delete', post)")
-     *
-     * The Security annotation value is an expression (if it evaluates to false,
-     * the authorization mechanism will prevent the user accessing this resource).
      */
     public function deleteAction(Request $request, Post $post)
     {
-        // Delete the tags associated with this blog post. This is done automatically
-        // by Doctrine, except for SQLite (the database used in this application)
-        // because foreign key support is not enabled by default in SQLite
-        $post->getTags()->clear();
-
         $em = $this->getDoctrine()->getManager();
         $em->remove($post);
         $em->flush();
 
         $this->addFlash('success', 'Post deleted');
 
-        return $this->redirectToRoute('admin_list');
+        return $this->redirectToRoute('admin_post_list');
     }
 }

@@ -38,18 +38,26 @@ class Comment
     private $content;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="title", type="string", length=255)
-     */
-    private $title;
-
-    /**
      * @var \DateTime
      *
      * @ORM\Column(name="published_at", type="datetime")
      */
     private $publishedAt;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="post_id", type="integer")
+     */
+     private $postId;
+
+     /**
+     * @var int
+     *
+     * @ORM\Column(name="user_id", type="integer")
+     */
+     private $userId;
+     
 
 
     public static function create()
@@ -125,30 +133,6 @@ class Comment
     }
 
     /**
-     * Set title
-     *
-     * @param string $title
-     *
-     * @return Comment
-     */
-    public function setTitle($title)
-    {
-        $this->title = $title;
-
-        return $this;
-    }
-
-     /**
-      * Get title
-      *
-      * @return string
-      */
-     public function getTitle()
-     {
-         return $this->title;
-     }
-
-    /**
      * Set publishedAt
      *
      * @param \DateTime $publishedAt
@@ -171,4 +155,52 @@ class Comment
     {
         return $this->publishedAt;
     }
+
+    /**
+     * Set postId
+     *
+     * @param string $postId
+     *
+     * @return Comment
+     */
+    public function setPostId($postId)
+    {
+        $this->postId = $postId;
+
+        return $this;
+    }
+
+    /**
+     * Get postId
+     *
+     * @return int
+     */
+     public function getPostId()
+     {
+         return $this->postId;
+     }
+
+    /**
+     * Set userId
+     *
+     * @param string $userId
+     *
+     * @return Comment
+     */
+    public function setUserId($userId)
+    {
+        $this->userId = $userId;
+
+        return $this;
+    }
+
+    /**
+     * Get userId
+     *
+     * @return int
+     */
+     public function getUserId()
+     {
+         return $this->userId;
+     }
 }

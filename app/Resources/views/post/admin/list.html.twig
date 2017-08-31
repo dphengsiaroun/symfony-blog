@@ -11,7 +11,6 @@
                 <th>{{ 'post.content'|trans }}</th>
                 <th>{{ 'post.title'|trans }}</th>
                 <th>{{ 'post.published_at'|trans }}</th>
-                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -22,6 +21,7 @@
                     <td>{{ post.title }}</td>
                     <td>{{ post.publishedAt |date }}</td>
                     <td><a class="btn btn-block btn-sm btn-outline" href="{{ path('admin_post_show', {'id': post.id}) }}"><i class="icon-eye"></i> View</a></td>
+                    <td><a class="btn btn-block btn-sm btn-outline" href="{{ path('admin_post_edit', {'id': post.id}) }}"><i class="icon-edit"></i> Edit</a></td>
                 </tr>
             {% else %}
                 <tr>

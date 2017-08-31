@@ -14,6 +14,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use AppBundle\Entity\User;
 use AppBundle\Form\Type\UserRegistrationType;
 use AppBundle\Form\Type\UserUpdatePasswordType;
+use AppBundle\Form\Type\UserEditProfileType;
 use Ramsey\Uuid\Uuid;
 
 class UserController extends Controller
@@ -81,28 +82,27 @@ class UserController extends Controller
     }
 
      /**
-     * @Route("/update-profile", name="update_profile")
+     * @Route("/user/{id}/edit", name="edit_profile")
      * @Method({"GET", "POST"})
      */
-     public function updateProfileAction(Request $request, EntityManagerInterface $em, UserInterface $user)
-     {
-         $form = $this->createForm(UserUpdateProfileType::class);
- 
-         $form->handleRequest($request);
- 
-         if ($form->isSubmitted() && $form->isValid()) {
- 
-             $em->flush();// execute all SQL queries
- 
-             $this->addFlash('success', 'Profile updated!');
- 
-             return $this->redirectToRoute('homepage');
-         }
- 
-         return $this->render('user/update_profile.html.twig', [
-             'form' => $form->createView(),
-         ]);
-     }
+    public function editProfileAction(Request $request, User $user)
+    {
+        $form = $this->createForm(UserEditProfileType::class, $user);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            $this->addFlash('success', 'Profile updated!');
+
+            return $this->redirectToRoute('profile');
+        }
+
+        return $this->render('user/edit_profile.html.twig', [
+            'user' => $user,
+            'form' => $form->createView(),
+        ]);
+    }
 
     /**
      * @Route("/login", name="login")
@@ -149,6 +149,29 @@ class UserController extends Controller
              'user' => $user,
          ]);
      }
+
+     /**
+     * @Route("/admin/users/{id}/edit", name="admin_user_edit")
+     * @Method({"GET", "POST"})
+     */
+    public function editAction(Request $request, User $user)
+    {
+        $form = $this->createForm(UserEditProfileType::class, $user);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            $this->addFlash('success', 'User updated!');
+
+            return $this->redirectToRoute('admin_user_list');
+        }
+
+        return $this->render('user/admin/edit.html.twig', [
+            'user' => $user,
+            'form' => $form->createView(),
+        ]);
+    }
 
     /**
      * @Route("/profile/", name="profile")
