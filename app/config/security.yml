@@ -43,6 +43,8 @@ security:
           roles: IS_AUTHENTICATED_ANONYMOUSLY
         - path: ^/(en|fr)/about
           roles: IS_AUTHENTICATED_ANONYMOUSLY
+        - path: ^/(en|fr)/posts
+          roles: IS_AUTHENTICATED_ANONYMOUSLY
         - path: ^/(en|fr)/contact$
           roles: IS_AUTHENTICATED_ANONYMOUSLY
         - path: ^/

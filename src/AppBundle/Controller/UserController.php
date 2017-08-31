@@ -156,11 +156,6 @@ class UserController extends Controller
      */
     public function profileAction(Request $request)
     {
-        $em = $this->getDoctrine()->getEntityManager();
-
-        $filter = $request->query->get('filter', 'all');
-        $name = $em->getRepository(User::class)->findForList($filter);
-
         return $this->render('user/profile.html.twig');
     }
 }
