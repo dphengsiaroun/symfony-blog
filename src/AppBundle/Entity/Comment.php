@@ -51,28 +51,12 @@ class Comment
      */
      private $postId;
 
-     /**
-     * @var int
+      /**
+     * @var string
      *
-     * @ORM\Column(name="user_id", type="integer")
+     * @ORM\Column(name="user_id", type="string", length=36)
      */
      private $userId;
-     
-
-
-    public static function create()
-    {
-        return new self();
-    }
-
-    public static function createFromUser(User $user)
-    {
-        $Comment = new self();
-
-        $Comment->setFullname($user->getFullname());
-
-        return $Comment;
-    }
 
     /**
      * Get id
@@ -197,7 +181,7 @@ class Comment
     /**
      * Get userId
      *
-     * @return int
+     * @return string
      */
      public function getUserId()
      {

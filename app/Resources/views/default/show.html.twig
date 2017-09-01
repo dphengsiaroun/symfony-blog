@@ -11,7 +11,7 @@
                     <span style="font-style: italic; font-size: 15px; color: #EF5353;"><i class="icon-user"></i> Posted by {{ post.fullname }} - {{ post.publishedAt|date }}</span>
 					<div class="fh5co-spacer fh5co-spacer-sm"></div>
 					<p>{{ post.content }}</p>
-					<a href="{{ path('comment') }}" class="btn btn-primary"><i class="icon-speech-bubble"></i> Add comment</a>
+					<a href="{{ path('comment'), {'post_id': post.id} }}" class="btn btn-primary"><i class="icon-speech-bubble"></i> Add comment</a>
 				</div>
         	</div>
        </div>
