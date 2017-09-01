@@ -10,17 +10,16 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\User\UserInterface;
 use AppBundle\Entity\Comment;
-use AppBundle\Entity\Post;
 use AppBundle\Form\Type\CommentType;
 use Doctrine\ORM\EntityManagerInterface;
 
 class CommentController extends Controller
 {
     /**
-     * @Route("/comment/{post_id}", name="comment")
+     * @Route("/comment", name="comment")
      * @Method({"GET", "POST"})
      */
-    public function commentAction(Request $request, EntityManagerInterface $em, UserInterface $user = null, Post $post)
+    public function commentAction(Request $request, EntityManagerInterface $em, UserInterface $user = null)
     {
         $comment = new Comment();
         $form = $this->createForm(CommentType::class, $comment);
@@ -30,7 +29,7 @@ class CommentController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $comment->setPublishedAt(new \DateTime());
             $comment->setUserId($user->getId());
-            // $comment->setPostId($post->getPostId());
+            $comment->setPostId(4);
 
 
             $em->persist($comment);// prepare to insert into the database
@@ -42,7 +41,6 @@ class CommentController extends Controller
         }
 
         return $this->render('comment/comment.html.twig', [
-            'post' => $post,
             'form' => $form->createView(),
         ]);
     }
