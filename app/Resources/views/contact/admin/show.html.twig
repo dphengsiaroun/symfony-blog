@@ -36,6 +36,7 @@
                                     <a href="{{ path('admin_contact_process', {'id': contact.id, 'token': csrf_token('contact_process.' ~ contact.id)}) }}" class="btn btn-block btn-sm btn-outline">Mark as processed</a>
                                 {% endif %}
 							</div>
+                            <a href="{{ path('admin_contact_list') }}" class="btn btn-primary"><i class="icon-arrow-left2"></i> Back</a>
 						</div>
 					</div>
 				</div>
