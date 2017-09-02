@@ -15,8 +15,8 @@
         {% endif %} 
             <li><a href="{{ path('logout') }}"><i class="icon-log-out"></i> Logout ({{ app.user.fullname }})</a></li>
         {% else %}
-            <li{{ app.request.get('_route') == 'register' ? ' class="active"'}}><a href="{{ path('register') }}">Register</a></li>
-            <li{{ app.request.get('_route') == 'login' ? ' class="active"'}}><a href="{{ path('login') }}">Login</a></li>
+            <li{{ app.request.get('_route') == 'register' ? ' class="active"'}}><a href="{{ path('register') }}"><i class="icon-add-user"></i> Register</a></li>
+            <li{{ app.request.get('_route') == 'login' ? ' class="active"'}}><a href="{{ path('login') }}"><i class="icon-login"></i> Login</a></li>
         {% endif %}
     </ul>
     <h3 class="fh5co-lead">Language</h3>
