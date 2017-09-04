@@ -38,7 +38,7 @@ $ bin/console doctrine:schema:update --force
 
 The installation should be successfull, go to the website.
 
-1. Open a web browser on (http:localhost:8000/).
+1. Open a web browser on (http://localhost:8000/).
 2. It should be working.
 
 # Authors
