@@ -25,9 +25,12 @@ $ composer install
 
 ## Create database
 
+Into project, configure `app->config->parameters.yml` file with your server parameters.
+
 Open a new console or terminal.
 ```
 $ cd symfony-blog
+$ bin/console doctrine:schema:create
 $ bin/console doctrine:schema:update --force
 ```
 
