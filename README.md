@@ -4,9 +4,8 @@ This is a web project for Estiam.
 
 # Prerequisites
 
-1. Install WAMP (http://www.wampserver.com/). WAMP is a PHP, MySQL, Apache stack.
+1. Install WAMP (http://www.wampserver.com/) or MAMP. WAMP or MAMP is a PHP, MySQL, Apache stack.
 2. Install Composer (https://getcomposer.org/). For info: Composer is used to install php dependancies as npm does.
-
 
 # Installation
 
